@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070511">
+  <title>MOD MENU • Rio Rise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="crown">♛</div>
+        <div>
+          <h1>MOD MENU</h1>
+          <span>RIO RISE • PAINEL</span>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="status-user"><span class="dot"></span><b>MOD ATIVO</b></div>
+        <button class="icon-btn" id="settingsBtn" title="Configurações">⚙</button>
+        <button class="icon-btn" id="themeBtn" title="Alternar brilho">☼</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <button class="nav active" data-section="inicio">⌂ <span>INÍCIO</span></button>
+        <button class="nav" data-section="mods">◈ <span>MODS</span></button>
+        <button class="nav" data-section="config">⚙ <span>CONFIGURAÇÕES</span></button>
+        <button class="nav" data-section="sobre">ⓘ <span>SOBRE</span></button>
+        <button class="nav" id="exitBtn">⇥ <span>SAIR</span></button>
+        <div class="side-tag">♛<br><strong>JOGUE<br>DO SEU<br>JEITO</strong></div>
+      </aside>
+
+      <main class="content">
+        <div class="page-title">
+          <div>
+            <p class="eyebrow">PAINEL DE CONTROLE</p>
+            <h2>Funções disponíveis</h2>
+          </div>
+          <button class="primary" id="allBtn">ATIVAR TUDO</button>
+        </div>
+
+        <section class="cards" id="cards"></section>
+
+        <section class="settings-panel hidden" id="settingsPanel">
+          <h3>Configurações</h3>
+          <label>Nome do painel<input id="panelName" value="MOD MENU • RIO RISE"></label>
+          <label>Notificações<select id="notifications"><option>Ativadas</option><option>Desativadas</option></select></label>
+          <button class="primary" id="saveSettings">SALVAR</button>
+        </section>
+
+        <section class="about-panel hidden" id="aboutPanel">
+          <div class="about-icon">♛</div>
+          <h3>MOD MENU • RIO RISE</h3>
+          <p>Interface demonstrativa para gerenciamento de opções e configurações. Esta versão é um painel visual e não altera ou injeta código em jogos.</p>
+          <small>Versão 1.0 • Interface responsiva</small>
+        </section>
+      </main>
+
+      <aside class="right-panel">
+        <div class="status-card">
+          <div class="status-heading">STATUS DO PAINEL <span class="live">●</span></div>
+          <div class="big-status">ATIVO</div>
+          <div class="stat"><span>✓ FUNÇÕES ATIVAS</span><b id="activeCount">0/6</b></div>
+          <div class="stat"><span>✓ ESTABILIDADE</span><b>100%</b></div>
+          <div class="stat"><span>⌁ CONEXÃO</span><b>ONLINE</b></div>
+          <div class="stat"><span>◷ VERSÃO</span><b>v1.0</b></div>
+        </div>
+
+        <div class="quote-card">
+          <div class="quote-crown">♛</div>
+          <strong>PODER<br>NAS SUAS<br>MÃOS</strong>
+        </div>
+
+        <div class="progress"><span id="progress"></span></div>
+        <div class="footer-tag"><b>⚡ JOGUE SEM LIMITES</b><small>SEU ESTILO • SUAS REGRAS.</small></div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
