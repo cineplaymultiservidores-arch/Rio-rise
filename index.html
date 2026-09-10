@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rio Rise — Painel</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#070711;color:#fff;min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;inset:0;background:linear-gradient(90deg,rgba(5,4,15,.96),rgba(5,4,15,.72)),url('game-overlay.png') center/cover;filter:saturate(.9);z-index:-2}
+.glow{position:fixed;width:360px;height:360px;border-radius:50%;background:#8b20ff33;filter:blur(90px);right:-80px;top:15%;z-index:-1}
+.app{display:flex;min-height:100vh;padding:18px;gap:18px}.side{width:245px;background:#07070dcc;border:1px solid #7d2cff55;border-radius:22px;padding:20px;backdrop-filter:blur(18px);display:flex;flex-direction:column}
+.logo{font-size:29px;font-weight:900;letter-spacing:-1px}.logo span{color:#a62cff;font-style:italic}.sub{font-size:11px;color:#888;margin:3px 0 25px}
+.nav button{width:100%;padding:15px 13px;margin:5px 0;background:transparent;border:0;border-radius:13px;color:#a7a7b8;text-align:left;font-weight:700;font-size:14px;cursor:pointer}.nav button.active,.nav button:hover{background:linear-gradient(90deg,#8b18ff33,#8b18ff08);color:#fff;box-shadow:inset 2px 0 #9d2cff}
+.badge{margin-top:auto;border:1px solid #6e2bff55;border-radius:15px;padding:14px;color:#aaa;font-size:12px}.badge b{display:block;color:#a72cff;font-size:15px;margin-bottom:3px}
+.main{flex:1;max-width:850px}.top{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}.pill{background:#080811e8;border:1px solid #7229ff55;border-radius:14px;padding:12px 16px;min-width:140px}.pill small{color:#999}.pill strong{display:block;font-size:18px;margin-top:3px}
+.card{background:#06060ee8;border:1px solid #7c31ff66;border-radius:24px;padding:24px;backdrop-filter:blur(18px);box-shadow:0 20px 70px #0008}
+h1{margin:0;font-size:24px}h1 span{color:#a82cff}.hint{color:#888;font-size:13px;margin:6px 0 20px}
+.section{color:#a82cff;font-weight:900;margin:20px 0 9px;font-size:14px}.row{display:flex;align-items:center;justify-content:space-between;padding:15px;border:1px solid #252534;border-radius:15px;margin:8px 0;background:#0a0a14cc}.info{display:flex;gap:12px;align-items:center}.ico{font-size:23px;width:30px;text-align:center}.name{font-weight:800}.desc{color:#888;font-size:12px;margin-top:3px}
+.switch{width:54px;height:29px;border-radius:20px;background:#282833;padding:3px;cursor:pointer;transition:.2s}.switch i{display:block;width:23px;height:23px;background:#ddd;border-radius:50%;transition:.2s}.switch.on{background:#8d20ff;box-shadow:0 0 15px #8d20ff66}.switch.on i{transform:translateX(25px);background:white}
+.action{width:100%;padding:15px;border:0;border-radius:14px;background:linear-gradient(90deg,#7714ff,#a62cff);color:#fff;font-weight:900;font-size:14px;margin-top:18px;cursor:pointer}.action:active{transform:scale(.99)}
+.toast{position:fixed;right:18px;bottom:18px;background:#080811;border:1px solid #8d20ff66;border-radius:14px;padding:13px 17px;display:none}.toast.show{display:block}
+.cross{position:fixed;right:35px;bottom:105px;width:58px;height:58px;border:2px solid #fff;border-radius:50%;display:grid;place-items:center;font-size:28px;background:#090912aa}
+@media(max-width:760px){.app{padding:10px;display:block}.side{width:100%;margin-bottom:10px;padding:15px}.nav{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}.nav button{margin:0;text-align:center;padding:11px 5px;font-size:11px}.badge{display:none}.top{overflow:auto}.pill{min-width:125px}.card{padding:17px}.cross{right:18px;bottom:18px}.bg{background-position:center}}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="glow"></div>
+<div class="app">
+<aside class="side">
+<div class="logo">RIO <span>RISE</span></div><div class="sub">PAINEL DE JOGOS • DEMO UI</div>
+<div class="nav">
+<button class="active">⌂ PRINCIPAL</button><button>◉ VISUAL</button><button>▣ ARMAS</button><button>⚙ MISC</button><button>☷ CONFIG</button>
+</div>
+<div class="badge"><b>RIO RISE PANEL</b>Interface demonstrativa<br>v1.0</div>
+</aside>
+<main class="main">
+<div class="top"><div class="pill">💵 <small>Saldo demo</small><strong>R$ 9.999.999</strong></div><div class="pill">🔫 <small>Munição demo</small><strong>9999</strong></div><div class="pill">❤️ <small>Vida</small><strong>100%</strong></div></div>
+<section class="card"><h1>FUNÇÕES <span>PRINCIPAIS</span></h1><div class="hint">Painel visual para demonstração. Os controles abaixo não alteram o jogo.</div>
+<div class="section">● CONTROLES</div>
+<div id="features"></div>
+<button class="action" id="hide">◉ OCULTAR PAINEL</button>
+</section>
+</main></div>
+<div class="cross">✚</div><div class="toast" id="toast">Função atualizada</div>
+<script>
+const items=[
+['❤️','Vida infinita','Simulação visual de status de vida'],
+['💰','Dinheiro infinito','Simulação visual de saldo'],
+['🔫','Munição infinita','Simulação visual de munição'],
+['🎯','Mira','Overlay visual de mira'],
+['⚙️','Regedit','Apenas indicador visual de configuração']
+];
+const box=document.getElementById('features');
+items.forEach((x,i)=>{let r=document.createElement('div');r.className='row';r.innerHTML=`<div class="info"><div class="ico">${x[0]}</div><div><div class="name">${x[1]}</div><div class="desc">${x[2]}</div></div></div><div class="switch ${i<4?'on':''}"><i></i></div>`;r.querySelector('.switch').onclick=()=>{r.querySelector('.switch').classList.toggle('on');showToast(x[1]+' atualizada')};box.appendChild(r)});
+function showToast(t){let el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1300)}
+document.getElementById('hide').onclick=()=>{document.querySelector('.card').style.display='none';let b=document.createElement('button');b.textContent='☰ ABRIR PAINEL';b.className='action';b.style.position='fixed';b.style.left='12px';b.style.bottom='12px';b.style.width='180px';b.onclick=()=>{document.querySelector('.card').style.display='block';b.remove()};document.body.appendChild(b)};
+</script>
+</body></html>
